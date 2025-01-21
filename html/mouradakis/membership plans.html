@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+      <!-- developed by: Stergios Mouradakis, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership Plans</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        nav {
+            text-align: center;
+            margin: 30px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 20px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ff0000;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .plans {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-around;
+            margin-top: 30px;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        .plan {
+            background: #222222;
+            border: 1px solid #444444;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+            width: 30%;
+            min-width: 280px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .plan:hover {
+            transform: translateY(-10px);
+        }
+
+        .plan h2 {
+            color: #ff0000;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plan p {
+            font-size: 1.1rem;
+            margin: 15px 0;
+        }
+
+        .plan ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .plan ul li {
+            font-size: 1rem;
+            margin: 8px 0;
+        }
+
+        .plan button {
+            background: #ff0000;
+            border: none;
+            color: #ffffff;
+            padding: 15px 25px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s ease-in-out, transform 0.2s ease;
+        }
+
+        .plan button:hover {
+            background: #d10000;
+            transform: scale(1.1);
+        }
+
+       
+        .selected-plan {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.3rem;
+            color: #ffffff;
+            background: #ff0000;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: linear-gradient(to right, #201f1f, #201f1f);
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+
+    <div class="container">
+        <h2>Our Membership Plans</h2>
+
+        <div class="plans">
+            <div class="plan" id="basic-plan">
+                <h2>Basic Plan</h2>
+                <p>The ideal plan for beginners stepping into fitness.</p>
+                <ul>
+                    <li>Access to gym equipment during regular hours</li>
+                    <li>Friendly support from gym staff</li>
+                    <li>Locker room and shower access</li>
+                    <li>Weekly fitness tips newsletter</li>
+                </ul>
+                <button onclick="selectPlan('Basic Plan')">Choose Plan</button>
+            </div>
+
+            <div class="plan" id="standard-plan">
+                <h2>Standard Plan</h2>
+                <p>Perfect for fitness enthusiasts looking for variety.</p>
+                <ul>
+                    <li>Everything in the Basic Plan</li>
+                    <li>Access to group fitness classes (Yoga, Zumba, HIIT)</li>
+                    <li>Extended gym hours for flexibility</li>
+                    <li>Quarterly fitness progress assessments</li>
+                </ul>
+                <button onclick="selectPlan('Standard Plan')">Choose Plan</button>
+            </div>
+
+            <div class="plan" id="premium-plan">
+                <h2>Premium Plan</h2>
+                <p>Designed for those committed to achieving their peak fitness.</p>
+                <ul>
+                    <li>Everything in the Standard Plan</li>
+                    <li>24/7 access to the gym</li>
+                    <li>Dedicated personal trainer sessions</li>
+                    <li>Access to premium facilities like sauna and spa</li>
+                    <li>Nutrition and diet consultation</li>
+                </ul>
+                <button onclick="selectPlan('Premium Plan')">Choose Plan</button>
+            </div>
+        </div>
+
+        <div class="selected-plan" id="selected-plan">
+            <p>No plan selected yet.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 City Gym | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function selectPlan(planName) {
+            const selectedPlanElement = document.getElementById('selected-plan');
+            selectedPlanElement.innerHTML = `<p>You selected the <strong>${planName}</strong>.</p>`;
+        }
+    </script>
+
+<footer>
+    <b>Contact info</b>
+    <p> atsertanidis@york.citycollege.eu</p>
+        +30694286381
+</footer>
+
+</body>
+</html>

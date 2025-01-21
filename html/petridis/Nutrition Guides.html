@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- developed by: Thomas Petridis, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Guides</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        .content-section {
+            padding: 2rem;
+            margin: 2rem auto;
+            background: #000000;
+            border-radius: 8px;
+            max-width: 1000px;
+        }
+
+        
+        .section-title {
+            background: #1a1a1a;
+            color: #ff5c5c;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border: 2px solid #d60606;
+            border-radius: 8px;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+       
+        .section-title.no-box {
+            background: none;
+            color: #ff5c5c;
+            border: none;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-text {
+            background: #1a1a1a;
+            color: #eaeaea;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two cards side by side */
+            gap: 1.5rem; /* Space between the cards */
+            justify-content: center;
+        }
+
+        .meal-card {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .meal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+        }
+
+        .meal-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .meal-card h3 {
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            color: #ff4c4c;
+            text-align: center;
+            background: #1e1e1e;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .meal-card p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #eaeaea;
+            margin: 0.5rem 0;
+        }
+
+        .meal-card a {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #d60606;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .meal-card a:hover {
+            background: #ff4c4c;
+        }
+
+        footer {
+            background-color: #cc2121;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr; /* Stacks cards on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+   
+    <section id="nutrition-tips" class="content-section">
+        <div class="section-title no-box">Nutrition Guides: Sample Meal Plans and Tips</div>
+        <div class="info-text">
+            Welcome to our Nutrition Guides! Our curated meal plans and nutritional tips are designed to help you maintain a balanced and healthy lifestyle. 
+            <ul>
+                <li><strong>Balance:</strong> Combine proteins, carbohydrates, and healthy fats in your meals for sustained energy.</li>
+                <li><strong>Hydration:</strong> Drink at least 8 glasses of water daily to keep your body energized and hydrated.</li>
+                <li><strong>Fruits & Veggies:</strong> Add a variety of fruits and vegetables to your meals to gain essential vitamins and minerals.</li>
+                <li><strong>Snacks:</strong> Opt for nutritious snacks like nuts, seeds, and fresh fruits to keep hunger at bay.</li>
+                <li><strong>Consistency:</strong> A consistent eating pattern supports your fitness and wellness goals effectively.</li>
+            </ul>
+            Use these tips as a guide to maximize your health and complement your fitness journey.
+        </div>
+    </section>
+
+    
+    <section id="nutrition-guides" class="content-section">
+        <div class="section-title">Meal Plans</div>
+        <div class="cards-container">
+            
+            <div class="meal-card">
+                <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?fm=jpg&q=60&w=3000" alt="Breakfast">
+                <h3>Breakfast</h3>
+                <p>Option 1: Oatmeal with fresh berries and almond milk</p>
+                <p>Option 2: Greek yogurt with honey and granola</p>
+                <p>Option 3: Scrambled eggs with avocado toast</p>
+                <a href="#">View More Breakfast Ideas</a>
+            </div>
+
+            
+            <div class="meal-card">
+                <img src="https://plus.unsplash.com/premium_photo-1673108852141-e8c3c22a4a22" alt="Lunch">
+                <h3>Lunch</h3>
+                <p>Option 1: Grilled chicken with quinoa and steamed vegetables</p>
+                <p>Option 2: Vegetable wrap with hummus</p>
+                <p>Option 3: Salmon salad with lemon dressing</p>
+                <a href="#">View More Lunch Ideas</a>
+            </div>
+
+           
+            <div class="meal-card">
+                <img src="https://realfood.tesco.com/media/images/380x250-Beef-burrito-bowl-cf212a4f-3402-4e46-aa4a-fa56bacae103-0-380x250.jpg" alt="Dinner">
+                <h3>Dinner</h3>
+                <p>Option 1: Baked salmon with sweet potatoes and broccoli</p>
+                <p>Option 2: Stir-fried tofu with mixed vegetables</p>
+                <p>Option 3: Grilled steak with roasted asparagus</p>
+                <a href="#">View More Dinner Ideas</a>
+            </div>
+
+            
+            <div class="meal-card">
+                <img src="https://mrtsbakery.com.au/cdn/shop/articles/healthy-vegan-snack-ideas_600x.png?v=1719172403">
+                <h3>Snacks</h3>
+                <p>Option 1: Carrot sticks with hummus</p>
+                <p>Option 2: Mixed nuts and dried fruits</p>
+                <p>Option 3: Sliced apple with peanut butter</p>
+                <a href="#">View More Snack Ideas</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
+</body>
+</html>

@@ -1,15 +1,481 @@
 <!DOCTYPE html>
-<!-- Group name:
-     Group members:
+<!-- Group name: CITY GYM
+     Group members: Andreas Tsertanidis, Thomas Petridis, Portokalidis Georgios, Patousias Ioannis, Stergios Mouradakis
 -->
-<!-- developed by: -->
+<!-- developed by: Andreas Tsertanidis  (All pictures and media used are stock photos)-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Coursework</title>
+    <title>CITY GYM</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+        body {
+            background-image: url(images/ai-generated-a-gym-with-dark-exercise-equipment-free-photo.jpg);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .content {
+            text-align: center;
+            color: #fff;
+            padding: 30px;
+        }
+
+        .content h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .content span {
+            color: #eb0e0e;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery .item {
+            width: 100%;
+            margin: 20px;
+            max-width: 300px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 0%;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.2);
+        }
+
+        .gallery .desc {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+        }
+
+        footer {
+            background: linear-gradient(to right, #201f1f, #201f1f);
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .section {
+            padding: 30px;
+            font-weight: bold;
+            color: rgb(243, 230, 230);
+            text-align: left;
+        }
+
+        .section h2 {
+            color: red;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .info, .difference {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            gap: 30px;
+        }
+
+        .mission {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            gap: 30px;
+        }
+
+        .mission-text {
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 40%;
+        }
+
+        .info-text, .difference-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 55%;
+        }
+
+        .mission-text p, .info-text p, .difference-text p {
+            text-align: justify;
+            font-size: 1.2em;  /* Increased the font size for these sections */
+        }
+
+        .info {
+            justify-content: flex-start;
+        }
+
+        .info img {
+            flex: 1;
+            max-width: 500px;
+            min-width: 250px;
+            margin-left: 30px;
+        }
+
+        .difference {
+            justify-content: flex-end;
+        }
+
+        .difference img {
+            flex: 1;
+            max-width: 500px;
+            min-width: 250px;
+            margin-right: 30px;
+        }
+
+        @media (max-width: 768px) {
+            header ul li {
+                font-size: 1.1em;
+                margin: 0 1em;
+            }
+
+            .content h1 {
+                font-size: 3em;
+            }
+
+            .gallery img {
+                max-width: 220px;
+            }
+
+            .gallery .desc {
+                font-size: 1em;
+            }
+
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .mission-text,
+            .info-text,
+            .difference-text {
+                font-size: 1.1em; /* Adjusted for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header ul li {
+                font-size: 1em;
+                margin: 0.5em;
+            }
+
+            .content h1 {
+                font-size: 2.5em;
+            }
+
+            .gallery img {
+                max-width: 180px;
+            }
+
+            .section h2 {
+                font-size: 1.5em;
+            }
+
+            .mission-text,
+            .info-text,
+            .difference-text {
+                font-size: 1em; /* Adjusted for smaller screens */
+            }
+        }
+
+        @-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #ca0606, 0 0 40px #ca0606, 0 0 50px #ca0606, 0 0 60px #ca0606, 0 0 70px #ca0606;
+  }
+  to {
+    text-shadow: 0 0 20px #000000, 0 0 30px #ca0606, 0 0 40px #ca0606, 0 0 50px #ca0606, 0 0 60px #ca0606, 0 0 70px #ca0606, 0 0 80px #ca0606;
+  }
+    }
+
+    .glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    </style>
+
+
 </head>
 <body>
-    <p>Add your code here</p>
+    <header>
+        <ul>
+            <li>
+              <a href="/index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="html/tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="html/tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="html/mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="html/mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="html/mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="html/mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="html/mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="html/patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="html/patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="html/patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="html/patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="html/petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="html/petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="html/petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="html/petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="html/petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="html/portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header> 
+
+    <div class="main">
+        <div class="content">
+            <h1>Welcome to <span class="glow">CITY GYM</span></h1>
+            <p>Your one-stop fitness destination offering services and resources for everyone!</p>
+            <br> <br> 
+            <h1><span>Summary</span></h1>
+            <br> <br> 
+            <h2>Here you will find:</h2>
+        </div>
+
+        <div class="gallery">
+            <div class="item">
+                <img src="images/7-Hero-4K.png" alt="Fitness Resources">
+                <div class="desc">Fitness Resources</div>
+            </div>
+            <div class="item">
+                <img src="images/fitness-event-gym-challenge-1024x667.jpg" alt="Events">
+                <div class="desc">Events</div>
+            </div>
+            <div class="item">
+                <img src="images/food-wheel.webp" alt="Nutrition">
+                <div class="desc">Nutrition Advice</div>
+            </div>
+            <div class="item">
+                <img src="images/png-clipart-promotion-advertising-promotions-hand-sports-equipment-thumbnail.png" alt="Promotions">
+                <div class="desc">Promotions</div>
+            </div>
+            <div class="item">
+                <img src="images/curl.jpg" alt="Exercises">
+                <div class="desc">Exercises</div>
+            </div>
+            <div class="item">
+                <img src="images/work-schedules-header-banner.png" alt="Classes and Scheduling">
+                <div class="desc">Classes and Scheduling</div>
+            </div>
+            <div class="item">
+                <img src="images/calculator-fitness-sport-gym-512.webp" alt="Calculator">
+                <div class="desc">Fitness Calculator</div>
+            </div>
+        </div>
+
+        <div class="section mission">
+            <div class="mission-text">
+                <h2>OUR MISSION</h2>
+                <p>At City Gym, we are dedicated to creating a fitness community where everyone feels empowered to achieve their personal health and wellness goals. Our mission is to provide a comprehensive platform that supports every aspect of your fitness journey. From customized dietary plans that suit your lifestyle to expertly curated exercise guides that cater to all fitness levels, we ensure you have the tools and knowledge you need to thrive. We take pride in offering a wide range of classes tailored to different interests and skill levels, with flexible scheduling options to fit even the busiest routines. Our team of experienced professionals is here to guide and inspire you, offering evidence-based nutrition advice and resources that make healthy living accessible and sustainable. City Gym is more than just a fitness site — it’s a hub for motivation, education, and transformation. Whether you’re starting fresh, aiming to break through plateaus, or seeking ongoing support to maintain your progress, we are committed to helping you become the best version of yourself. Together, let’s build a healthier, stronger, and more confident community. Welcome to City Gym!</p>
+            </div>
+        </div>
+
+        <div class="section info">
+            <div class="info-text">
+                <h2>GYM INFO</h2>
+                <p>Imagine stepping into a sleek, state-of-the-art gym designed to inspire and energize. The space is vast, with high ceilings adorned with exposed beams and modern light fixtures that cast a warm glow over the area. Polished hardwood floors stretch across the cardio zone, where rows of treadmills, ellipticals, and stationary bikes face floor-to-ceiling windows offering a stunning view of a lush park or cityscape. To one side, the strength training area features a comprehensive range of machines—leg presses, chest presses, cable crossovers—all spaced to allow ample room for movement. Free weights are neatly arranged on racks, with adjustable benches and squat racks nearby. In the center, a functional fitness zone boasts kettlebells, medicine balls, TRX systems, and a turf strip for sled pushes. The studio rooms have mirrored walls and soft ambient lighting, perfect for yoga, spinning, or high-energy group classes. The gym’s interior is accented with a modern industrial vibe, blending concrete walls with vibrant murals and greenery that bring a refreshing touch of nature indoors. Locker rooms are equipped with sleek wooden lockers, rainfall showers, and plush towels, completing the luxurious experience.</p>
+            </div>
+            <img src="images/8d443aec-2090-4e9e-8793-6b95d830d89f.sized-1000x1000.jpg" alt="Gym Info">
+        </div>
+
+        <div class="section difference">
+            <img src="images/shutterstock_1065905168-1.jpg" alt="The Difference">
+            <div class="difference-text">
+                <h2>THE DIFFERENCE</h2>
+                <p>City Gym is more than a fitness facility; it is a forward-thinking organization that combines environmental sustainability with a strong emphasis on fostering a respectful and supportive community. Built with eco-conscious principles in mind, City Gym integrates energy-efficient equipment, sustainable building materials, and waste-reduction initiatives into its daily operations. By choosing City Gym, members contribute to a healthier planet while pursuing their personal fitness goals. Equally significant is the gym’s unwavering commitment to creating a positive and inclusive environment. A strict zero-tolerance policy against any form of disrespect ensures that every individual feels safe, valued, and empowered to focus on their wellness journey without fear of judgment or negativity. This dedication to respect extends beyond basic interactions; City Gym actively promotes a culture of mutual support and assistance. Members and staff are encouraged to help one another, creating a close-knit community where kindness and collaboration thrive. At City Gym, your membership represents more than access to state-of-the-art equipment and facilities—it is a statement of commitment to sustainable living and shared values. Joining means becoming part of a collective effort to prioritize both personal and planetary well-being, all while fostering meaningful connections with others who share the same dedication to respect and progress.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
 </body>
 </html>

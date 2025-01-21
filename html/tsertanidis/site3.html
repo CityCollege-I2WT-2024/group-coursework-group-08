@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- developed by: Andreas Tsertanidis (All photos and media are stock) -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - City Gym</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;;
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .contact-details {
+            margin-bottom: 20px;
+        }
+
+        .contact-details span {
+            font-weight: bold;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        form button {
+            background-color: #ad0404;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #fd0800;
+        }
+
+        footer {
+            background: linear-gradient(to right, #201f1f, #201f1f);
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, concerns, or feedback, we would love to hear from you! Please use the contact information below or fill out the form, and our team will get back to you as soon as possible.</p>
+
+        <div class="contact-details">
+            <p><span>Address:</span> Leontos Sofou 3, Thessaloniki 546 26</p>
+            <p><span>Phone:</span> +30 2310 123 456</p>
+            <p><span>Email:</span> <a href="mailto:info@citygym.com">atsertanidis@york.citycollege.eu</a></p>
+            <p><span>Working Hours:</span> Monday to Friday: 6:00 AM - 10:00 PM <br> Saturday to Sunday: 8:00 AM - 8:00 PM</p>
+        </div>
+
+        <h3>Send Us a Message</h3>
+        <form action="submit-form.php" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <footer>
+        <b>Contact Info</b>
+        <p>atsertanidis@york.citycollege.eu</p>
+        <p>  +30694286381</p>
+    </footer>
+</body>
+
+</html>

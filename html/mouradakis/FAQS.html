@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+      <!-- developed by: Stergios Mouradakis, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        .faqs {
+            background: #000000;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .faqs h2 {
+            background: linear-gradient(135deg, #ff0000, #8b0000);
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq {
+            background: #222222;
+            border: 1px solid #444444;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(90, 81, 81, 0.2);
+            margin-bottom: 20px;
+            padding: 20px 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .faq:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .faq h3 {
+            font-size: 1.5rem;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+
+        .faq p {
+            font-size: 1rem;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: linear-gradient(to right, #201f1f, #201f1f);
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .faq-list {
+                padding: 0 20px;
+            }
+
+            .faq {
+                padding: 15px 20px;
+            }
+
+            .faq h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+
+    <section class="faqs">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq">
+                    <h3>What are the gym's operating hours?</h3>
+                    <p>Our gym is open Monday to Friday from 6:00 AM to 10:00 PM and Saturday to Sunday from 8:00 AM to 8:00 PM. Premium members have 24/7 access.</p>
+                </div>
+                <div class="faq">
+                    <h3>What is included in the membership plans?</h3>
+                    <p>Each membership plan offers different benefits. The Basic Plan provides gym access during regular hours, the Standard Plan includes group classes, and the Premium Plan offers personal training, 24/7 access, and more. Check the "Membership Plans" section for details.</p>
+                </div>
+                <div class="faq">
+                    <h3>Can I freeze or cancel my membership?</h3>
+                    <p>Yes, memberships can be frozen for up to 3 months in case of medical or personal reasons. Cancellations require a 30-day notice. Contact our support team for assistance.</p>
+                </div>
+                <div class="faq">
+                    <h3>Do you offer trial memberships?</h3>
+                    <p>Yes, we offer a 7-day free trial for new members to explore our facilities and services before committing to a plan.</p>
+                </div>
+                <div class="faq">
+                    <h3>Are personal trainers available?</h3>
+                    <p>Yes, personal trainers are available for Premium Plan members or as an add-on service for other members. Our certified trainers will help you achieve your fitness goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
+</body>
+</html>
+

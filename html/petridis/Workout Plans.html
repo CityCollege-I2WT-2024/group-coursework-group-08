@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- developed by: Thomas Petridis, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Plans & Equipment Guide</title>
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        .content-section {
+            padding: 2rem;
+            margin: 2rem auto;
+            background: #000000;
+            border-radius: 8px;
+            max-width: 1000px;
+        }
+
+        
+        .section-title {
+            background: #1a1a1a;
+            color: #ff5c5c;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border: 2px solid #d60606;
+            border-radius: 8px;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-container img {
+            width: calc(50% - 0.75rem);
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+        }
+
+        .workout-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns */
+            gap: 1.5rem; /* Space between the rows */
+        }
+
+        .workout-plan,
+        .equipment-card {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .workout-plan:hover,
+        .equipment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+        }
+
+        .workout-plan h3,
+        .equipment-card h3 {
+            font-size: 1.2rem;
+            color: #ff4c4c;
+            text-align: center;
+            background: #1e1e1e;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .workout-plan ul,
+        .equipment-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0;
+            color: #eaeaea;
+        }
+
+        .workout-plan ul li,
+        .equipment-card ul li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: #292929;
+            border-radius: 4px;
+        }
+
+        .equipment-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #cc2121;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            .workout-container,
+            .equipment-container {
+                grid-template-columns: 1fr; /* Stacks cards on smaller screens */
+            }
+
+            .image-container {
+                flex-direction: column;
+            }
+
+            .image-container img {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+
+    <section id="workout-plans" class="content-section">
+        <div class="section-title">Workout Plans</div>
+
+        
+        <div class="image-container">
+            <img src="https://cdn.create.vista.com/api/media/small/156618284/stock-photo-muscular-athlete-training-with-barbell" alt="General Workout Image 1">
+            <img src="https://www.shape.gr/Content/ImagesDatabase/p/750x422/crop/both/58/58055707c70b4578b2c8a0cb16b52796.jpg?quality=81&404=default&v=4" alt="General Workout Image 2">
+        </div>
+
+        
+        <div class="workout-container">
+            
+            <div class="workout-plan">
+                <h3>Beginner Plan</h3>
+                <ul>
+                    <li>Day 1: Full Body Workout (Light Weights) - Focus on form and technique with basic exercises like squats, push-ups, and dumbbell rows.</li>
+                    <li>Day 2: Rest or Stretch - Incorporate gentle yoga or dynamic stretches to aid recovery.</li>
+                    <li>Day 3: Upper Body Focus - Target shoulders, chest, and back with exercises like shoulder presses, chest presses, and pull-ups.</li>
+                    <li>Day 4: Rest or Light Cardio - Go for a 20-minute brisk walk or cycling session.</li>
+                    <li>Day 5: Lower Body Focus - Include lunges, deadlifts, and leg presses for strength building.</li>
+                    <li>Day 6: Rest - Prioritize hydration and adequate sleep for muscle recovery.</li>
+                    <li>Day 7: Full Body Stretch - Stretch all major muscle groups for flexibility and relaxation.</li>
+                </ul>
+            </div>
+
+            
+            <div class="workout-plan">
+                <h3>Intermediate Plan</h3>
+                <ul>
+                    <li>Day 1: Push Day (Chest, Shoulders, Triceps) - Include bench presses, overhead presses, and tricep dips for strength and endurance.</li>
+                    <li>Day 2: Pull Day (Back, Biceps) - Focus on pull-ups, barbell rows, and bicep curls to build muscle definition.</li>
+                    <li>Day 3: Rest or Cardio - Perform a 30-minute moderate cardio session like jogging or rowing.</li>
+                    <li>Day 4: Leg Day (Quads, Hamstrings, Calves) - Perform squats, Romanian deadlifts, and calf raises for lower body power.</li>
+                    <li>Day 5: Rest - Engage in active recovery with light stretching or a slow-paced walk.</li>
+                    <li>Day 6: Full Body Compound Lifts - Incorporate exercises like deadlifts, cleans, and thrusters for overall strength.</li>
+                    <li>Day 7: Active Recovery - Do a low-impact activity such as swimming or yoga to restore energy.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
+    
+</body>
+</html>

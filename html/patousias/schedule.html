@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- developed by: Ioannis Patousias, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - City Gym</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black; 
+            color: white; 
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: red; 
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 15px;
+            border: 1px solid #444;
+            text-align: center;
+        }
+
+        .schedule-table th {
+            background-color: #222;
+            font-size: 18px;
+        }
+
+        .schedule-table td {
+            background-color: #333;
+            font-size: 16px;
+        }
+
+        .schedule-table td span {
+            color: #cc0000; 
+            font-weight: bold;
+        }
+
+        .event-info {
+            margin-top: 30px;
+        }
+
+        .event-info h2 {
+            color: red; 
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            font-size: 16px;
+        }
+
+        footer {
+            background: linear-gradient(to right, #201f1f, #201f1f);
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+
+    <div class="container">
+        <section class="schedule">
+            <h1>Weekly Schedule</h1>
+            <p>Check out our weekly schedule below to find the perfect class or training session for you. We offer a variety of fitness classes to suit all levels and interests!</p>
+
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Morning</th>
+                        <th>Afternoon</th>
+                        <th>Evening</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td><span>Yoga</span> (8:00 AM - 9:00 AM)</td>
+                        <td><span>HIIT</span> (1:00 PM - 2:00 PM)</td>
+                        <td><span>Spin Class</span> (6:00 PM - 7:00 PM)</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td><span>Pilates</span> (8:30 AM - 9:30 AM)</td>
+                        <td><span>Strength Training</span> (12:00 PM - 1:00 PM)</td>
+                        <td><span>Zumba</span> (6:30 PM - 7:30 PM)</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td><span>Yoga</span> (7:00 AM - 8:00 AM)</td>
+                        <td><span>Kickboxing</span> (1:30 PM - 2:30 PM)</td>
+                        <td><span>Bootcamp</span> (5:30 PM - 6:30 PM)</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td><span>Barre</span> (8:00 AM - 9:00 AM)</td>
+                        <td><span>Strength Training</span> (12:30 PM - 1:30 PM)</td>
+                        <td><span>Spin Class</span> (6:00 PM - 7:00 PM)</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td><span>Yoga</span> (7:30 AM - 8:30 AM)</td>
+                        <td><span>Pilates</span> (12:00 PM - 1:00 PM)</td>
+                        <td><span>HIIT</span> (5:00 PM - 6:00 PM)</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td><span>Bootcamp</span> (9:00 AM - 10:00 AM)</td>
+                        <td><span>Zumba</span> (12:00 PM - 1:00 PM)</td>
+                        <td><span>Kickboxing</span> (4:00 PM - 5:00 PM)</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td><span>Rest Day</span></td>
+                        <td><span>Rest Day</span></td>
+                        <td><span>Rest Day</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="event-info">
+                <h2>Additional Information</h2>
+                <p>Our gym offers a variety of group fitness classes, including Yoga, HIIT, Spin, Zumba, Kickboxing, and more. Each class is designed to cater to various fitness levels, from beginners to advanced athletes. If you’re looking for personalized training, we also offer one-on-one sessions with our expert trainers.</p>
+
+                <p>Check the schedule for available classes, and don’t forget to book your spot in advance! Some classes may have limited space, and spots fill up quickly, especially for popular sessions like Spin and HIIT.</p>
+
+               
+            </div>
+        </section>
+
+        <section class="contact-info">
+            <h2>Contact Information</h2>
+            <p>If you have any questions regarding the schedule or need help with class registration, feel free to contact us:</p>
+            <ul>
+                <li>Email: <a href="mailto:info@citygym.com">info@citygym.com</a></li>
+                <li>Phone: 123-456-7890</li>
+                <li>Visit us: 123 Gym Street, City, Country</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
+
+</body>
+</html>

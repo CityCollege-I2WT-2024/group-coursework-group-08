@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- developed by: Ioannis Patousias, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - City Gym</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black; 
+            color: white; 
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: red; 
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        .event-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .event {
+            background-color: #333; 
+            padding: 20px;
+            width: 30%;
+            border-radius: 8px;
+        }
+
+        .event img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: red; 
+            color: white; 
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #cc0000; 
+        }
+
+        .faq {
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            font-size: 16px;
+        }
+
+        footer {
+            background: linear-gradient(to right, #201f1f, #201f1f);
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+
+    <div class="container">
+        <section class="events">
+            <h1>Upcoming Events</h1>
+            <p>Stay updated on the exciting events happening at City Gym. Join us for fitness challenges, social gatherings, and much more!</p>
+            
+            <div class="event-list">
+                <!-- Event 1 -->
+                <div class="event">
+                    <h2>Annual Fitness Challenge</h2>
+                    <img src="https://cambiahealth.com/sites/default/files/2023-10/MCERG%20challenge.png" alt="Annual Fitness Challenge">
+                    <p>Our Annual Fitness Challenge is back! Compete in a series of fun and intense exercises, and show off your fitness skills. Prizes await the winners!</p>
+                    <ul>
+                        <li>Date: March 15, 2025</li>
+                        <li>Time: 10:00 AM - 2:00 PM</li>
+                        <li>Location: City Gym Main Hall</li>
+                    </ul>
+                    <p><strong>Event Highlights:</strong></p>
+                    <ul>
+                        <li>Multiple fitness stations</li>
+                        <li>Healthy snacks and drinks available</li>
+                        <li>Personalized fitness tips from trainers</li>
+                    </ul>
+                    <button onclick="window.location.href='register.html'">Register Now</button>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="event">
+                    <h2>Yoga Retreat</h2>
+                    <img src="https://images.squarespace-cdn.com/content/v1/5be463b825bf0231073cf86a/3377b65a-600a-413a-88b7-2273f139e833/Best+Fitness+Retreat+Phuket+Fit" alt="Yoga Retreat">
+                    <p>Relax, unwind, and rejuvenate at our Yoga Retreat. Join us for a weekend of peaceful meditation and restorative yoga practices.</p>
+                    <ul>
+                        <li>Date: April 10-12, 2025</li>
+                        <li>Time: All Day Event</li>
+                        <li>Location: Tranquil Park Resort</li>
+                    </ul>
+                    <p><strong>Event Highlights:</strong></p>
+                    <ul>
+                        <li>Guided yoga and meditation sessions</li>
+                        <li>Accommodation and meals included</li>
+                        <li>Workshops on mindfulness and wellness</li>
+                    </ul>
+                    <button onclick="window.location.href='register.html'">Sign Up</button>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="event">
+                    <h2>Community Fitness Day</h2>
+                    <img src="https://formagym.com/wp-content/uploads/2019/03/shutterstock_1065905168-1.jpg" alt="Community Fitness Day">
+                    <p>Join our Community Fitness Day and enjoy free fitness classes, health workshops, and fun activities for all ages. Bring your friends and family!</p>
+                    <ul>
+                        <li>Date: May 5, 2025</li>
+                        <li>Time: 9:00 AM - 4:00 PM</li>
+                        <li>Location: City Gym Outdoor Area</li>
+                    </ul>
+                    <p><strong>Event Highlights:</strong></p>
+                    <ul>
+                        <li>Free fitness classes throughout the day</li>
+                        <li>Health and nutrition talks</li>
+                        <li>Family-friendly games and activities</li>
+                    </ul>
+                    <button onclick="window.location.href='register.html'">Join the Event</button>
+                </div>
+                
+                <!-- Event 4 -->
+                <div class="event">
+                    <h2>Charity Run</h2>
+                    <img src="https://storage.googleapis.com/nub-news-files/nub-news-file-storage/542629/conversions/d9sm8tCubaJrHY6tUPAggLJK9oZHDJ-metadGVzcyB3LmpwZw%3D%3D--article.jpg" alt="Charity Run">
+                    <p>Run for a good cause! Our Charity Run supports local community projects. Whether you're running or walking, you’ll make a difference.</p>
+                    <ul>
+                        <li>Date: June 20, 2025</li>
+                        <li>Time: 7:00 AM - 10:00 AM</li>
+                        <li>Location: Downtown City Park</li>
+                    </ul>
+                    <p><strong>Event Highlights:</strong></p>
+                    <ul>
+                        <li>Multiple race categories (5K, 10K, Fun Run)</li>
+                        <li>Live music and entertainment</li>
+                        <li>Refreshments and race medals for participants</li>
+                    </ul>
+                    <button onclick="window.location.href='register.html'">Register Now</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What should I bring to the events?</h3>
+                <p>Please bring comfortable workout attire, a water bottle, and a towel. For outdoor events, don't forget sunscreen and a hat!</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I participate in multiple events?</h3>
+                <p>Yes, you can participate in as many events as you'd like! Just be sure to check the event timings and registration details.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are there age restrictions for the events?</h3>
+                <p>Our events are open to all ages, but certain activities may have specific age requirements. Check the event details for more information.</p>
+            </div>
+        </section>
+
+        <section class="contact-info">
+            <h2>Contact Information</h2>
+            <p>If you have any questions about the events or registration, please contact us:</p>
+            <ul>
+                <li>Email: <a href="mailto:info@citygym.com">info@citygym.com</a></li>
+                <li>Phone: 123-456-7890</li>
+                <li>Visit us: 123 Gym Street, City, Country</li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- developed by: Georgios Portokalidis, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Progress & Comments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>* {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #000000;
+        color: #333;
+        line-height: 1.6;
+      }
+      
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 0;
+      }
+
+     
+      
+      header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content{
+            background: linear-gradient(to right, #ffffff, #ffffff);
+        background-color: #333;
+      }
+      
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+      
+      /* Progress Section Styles */
+      .progress {
+        background: #333030;
+        padding: 25px;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .progress h2 {
+        font-size: 24px;
+        color: #ff0000;
+        margin-bottom: 10px;
+      }
+      
+      .progress p {
+        font-size: 18px;
+        font-weight: 500;
+        color: #ff0000;
+      }
+      
+      /* Comments Section Styles */
+      .comments-section {
+        background: #333030;
+        padding: 30px;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .comments-section h2,
+      .comments-section h3 {
+        color: #ffffff;
+      }
+      
+      textarea {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        resize: vertical;
+        transition: border-color 0.3s ease;
+      }
+      
+      textarea:focus {
+        border-color: #f53707;
+        outline: none;
+      }
+      
+      .submit-btn {
+        background-color: #ff0000;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        width: 100%;
+      }
+      
+      .submit-btn:hover {
+        background-color: #e20f08;
+      }
+      
+      /* Comment Section Styling */
+      #commentSection {
+        margin-top: 20px;
+      }
+      
+      .comment {
+        background-color: #3b3333;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: transform 0.2s ease;
+      }
+      
+      .comment:hover {
+        transform: translateX(5px);
+      }
+      
+      .comment-text {
+        font-size: 16px;
+        color: #555;
+      }
+      
+      .comment-time {
+        font-size: 12px;
+        color: #888;
+        margin-top: 5px;
+      }
+      
+      .comment-actions button {
+        background-color: #e74c3c;
+        color: rgb(133, 121, 121);
+        border: none;
+        padding: 8px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+      }
+      
+      .comment-actions button:hover {
+        background-color: #c0392b;
+      }
+      
+      footer {
+            background: linear-gradient(to right, #201f1f, #201f1f);
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        </style>
+</head>
+
+<header>
+  <ul>
+      <li>
+        <a href="../../index.html">HOME PAGE</a>
+        <ul class="homedropdown">
+        <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+        <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+      </ul>
+    </li>
+
+    <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+      <ul class="dropdown">
+        <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+        <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+        <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+        <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+      </ul>
+    </li>
+
+      <li><a href="../patousias/classes.html">CLASS TYPES</a>
+        <ul class="dropdown">
+          <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+          <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+          <li><a href="../patousias/events.html">EVENTS</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+        <ul class="dropdown">
+          <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+          <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+          <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+          <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+        <ul class="dropdown">
+          <li><a href="#">PROGRESS TRACKER</a></li>
+          <li><a href="#">FITNESS CALCULATOR</a></li>
+          <li><a href="#">FEEDBACK PAGE</a></li>
+          <li><a href="#">INTERACTIVE</a></li>
+        </ul>
+      </li>
+
+      <li><a href="">PERSONAL</a>
+          <ul class="dropdown">
+            <li><a href="../../students/personal.html">ANDREAS</a></li>
+            <li><a href="#">THOMAS</a></li>
+            <li><a href="#">STERGIOS</a></li>
+            <li><a href="#">IOANNIS</a></li>
+            <li><a href="#">GEORGIOS</a></li>
+          </ul>
+        </li>
+
+  </ul>
+</header>
+
+<body>
+    <div class="container">
+       
+                <h1 style="color: red;">Interactive</h1>
+                <p style="color: red;">Your journey to a better self starts here.</p>
+     
+        </header>
+
+        <section class="progress">
+            <h2>Member Progress</h2>
+            <p><strong>George:</strong> Lost 4 pounds in 1 month. Keep going, George!</p>
+        </section>
+
+        <section class="comments-section">
+            <h2>Leave a Comment</h2>
+            <form id="commentForm">
+                <textarea id="commentText" rows="4" placeholder="Share your thoughts..." required></textarea><br>
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+
+            <h3>Recent Comments</h3>
+            <div id="commentSection"></div>
+        </section>
+    </div>
+
+    <script src="script.js">
+        // Initialize localStorage for comments
+document.addEventListener("DOMContentLoaded", () => {
+  loadComments();
+});
+
+// Handle comment submission
+document.getElementById("commentForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const commentText = document.getElementById("commentText").value;
+  if (commentText.trim() === "") return;
+
+  const timestamp = new Date().toLocaleString();
+  const newComment = {
+      text: commentText,
+      time: timestamp
+  };
+
+  // Save comment to localStorage
+  const comments = getCommentsFromStorage();
+  comments.push(newComment);
+  localStorage.setItem("comments", JSON.stringify(comments));
+
+  // Clear textarea
+  document.getElementById("commentText").value = '';
+
+  // Update UI
+  displayComment(newComment);
+});
+
+// Load and display all comments
+function loadComments() {
+  const comments = getCommentsFromStorage();
+  comments.forEach(displayComment);
+}
+
+// Retrieve comments from localStorage
+function getCommentsFromStorage() {
+  const storedComments = localStorage.getItem("comments");
+  return storedComments ? JSON.parse(storedComments) : [];
+}
+
+// Display individual comment
+function displayComment(comment) {
+  const commentSection = document.getElementById("commentSection");
+const commentDiv = document.createElement("div");
+  commentDiv.classList.add("comment");
+
+  // Comment content
+  const textDiv = document.createElement("div");
+  textDiv.classList.add("comment-text");
+  textDiv.textContent = comment.text;
+
+  // Comment timestamp
+  const timeDiv = document.createElement("div");
+  timeDiv.classList.add("comment-time");
+
+
+  // Comment actions (delete button)
+  const actionsDiv = document.createElement("div");
+  actionsDiv.classList.add("comment-actions");
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", () => {
+      deleteComment(comment);
+      commentSection.removeChild(commentDiv);
+  });
+
+  actionsDiv.appendChild(deleteButton);
+
+  // Append to comment div
+  commentDiv.appendChild(textDiv);
+  commentDiv.appendChild(timeDiv);
+  commentDiv.appendChild(actionsDiv);
+
+  commentSection.appendChild(commentDiv);
+}
+
+// Delete a comment from localStorage
+function deleteComment(commentToDelete) {
+  let comments = getCommentsFromStorage();
+  comments = comments.filter(comment => comment.time !== commentToDelete.time);
+  localStorage.setItem("comments", JSON.stringify(comments));
+}
+
+</script>
+
+<footer>
+    <b>Contact info</b>
+    <p> atsertanidis@york.citycollege.eu</p>
+        +30694286381
+</footer>
+
+</body>
+</html>
+
+

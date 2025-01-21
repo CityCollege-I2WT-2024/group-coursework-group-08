@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- developed by: Thomas Petridis, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness & Wellness Benefits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        .content-section {
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .section-title {
+            background: linear-gradient(90deg, #ff5c5c, #cc2121);
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4);
+        }
+
+        .content {
+            margin-top: 1.5rem;
+        }
+
+        .content h3 {
+            font-size: 1.4rem;
+            color: #ff4c4c;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #ff4c4c;
+            padding-bottom: 0.2rem;
+        }
+
+        .content p {
+            color: #eaeaea;
+            margin-bottom: 1rem;
+        }
+
+        .content img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            background-color: #cc2121;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+
+    <section id="fitness-benefits" class="content-section">
+        <div class="section-title">Fitness & Wellness Benefits</div>
+
+        <div class="content">
+            <h3>Physical Health Benefits</h3>
+            <p>Regular exercise is vital for maintaining physical health. Activities like cardio workouts and strength training improve cardiovascular health, build muscle strength, and enhance joint flexibility. A consistent workout routine also boosts metabolism, helping with weight management and energy levels.</p>
+            <p>Furthermore, staying active reduces the risk of chronic diseases such as diabetes, hypertension, and osteoporosis. Incorporating 30 minutes of moderate exercise into your daily routine can make a significant impact on your overall physical well-being.</p>
+            <img src="https://s38565.pcdn.co/wp-content/uploads/2023/06/running-at-sunrise-couple-exercising-for-marathon-and-workout.jpeg" alt="Fitness Activity">
+        </div>
+
+        <div class="content">
+            <h3>Mental Health & Wellness</h3>
+            <p>Exercise is as beneficial for the mind as it is for the body. Physical activity stimulates the release of endorphins, which are natural mood lifters. This helps combat stress, anxiety, and symptoms of depression.</p>
+            <p>Additionally, regular workouts improve sleep quality and enhance cognitive function, such as focus and memory. Mind-body practices like yoga and meditation can further reduce stress and promote emotional balance.</p>
+        </div>
+
+        <div class="content">
+            <h3>Holistic Wellness</h3>
+            <p>Wellness extends beyond physical fitness—it’s about achieving balance in all aspects of life. Adopting a holistic approach includes eating a balanced diet rich in fruits, vegetables, lean proteins, and whole grains.</p>
+            <p>Equally important is prioritizing rest and recovery. Quality sleep rejuvenates the body and mind, while practices like mindfulness and breathing exercises foster a sense of calm and well-being.</p>
+        </div>
+
+        <div class="content">
+            <h3>The Power of Consistency</h3>
+            <p>Consistency is the cornerstone of a successful fitness and wellness journey. Small, steady efforts lead to sustainable results. Whether it’s committing to a daily walk, maintaining a weekly workout schedule, or incorporating mindfulness into your routine, consistency builds habits that last a lifetime.</p>
+            <p>Remember, fitness is not about perfection but about progress. Celebrate small wins and keep moving forward towards your goals.</p>
+        </div>
+    </section>
+
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
+</body>
+</html>

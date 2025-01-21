@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- developed by: Ioannis Patousias, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes - City Gym</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black; 
+            color: white; 
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h3 {
+            color: red; 
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        .class-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .class {
+            background-color: #333; 
+            padding: 20px;
+            width: 30%;
+            border-radius: 8px;
+        }
+
+        .class img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: red; 
+            color: white; 
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #cc0000; 
+        }
+
+        footer {
+            background: linear-gradient(to right, #201f1f, #201f1f);
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+
+    <div class="container">
+        <section class="classes">
+            <h1>Our Classes</h1>
+            <p>City Gym offers a variety of fitness classes to help you achieve your personal fitness goals. Whether you're a beginner or an experienced athlete, we have something for everyone!</p>
+            
+            <div class="class-list">
+                <!-- Yoga Class -->
+                <div class="class">
+                    <h3>YOGA</h3>
+                    <img src="https://fitbod.me/wp-content/uploads/2021/07/yoga-and-the-gym-on-the-same-day.jpg" alt="Yoga Class">
+                    <p>Relax, breathe, and stretch your way to better health with our Yoga classes. Perfect for improving flexibility, posture, and mental wellness.</p>
+                    <ul>
+                        <li>Duration: 60 minutes</li>
+                        <li>Difficulty: Beginner to Advanced</li>
+                        <li>Benefits: Increased flexibility, stress reduction, improved mental focus.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+                
+                <!-- HIIT Class -->
+                <div class="class">
+                    <h3>HIIT (High-Intensity Interval Training)</h3>
+                    <img src="https://invigor8.com/cdn/shop/articles/Benefits_of_hiit_781x.png?v=1725731647" alt="HIIT Class">
+                    <p>Get your heart racing and your metabolism going with our HIIT classes. A perfect combination of intense bursts of activity followed by short recovery periods.</p>
+                    <ul>
+                        <li>Duration: 30 to 45 minutes</li>
+                        <li>Difficulty: Intermediate to Advanced</li>
+                        <li>Benefits: Increased cardiovascular fitness, fat burning, improved strength.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+                
+                <!-- Strength Training Class -->
+                <div class="class">
+                    <h3>Strength Training</h3>
+                    <img src="https://media.istockphoto.com/id/615883260/photo/difficult-doesnt-mean-impossible.jpg?s=612x612&w=0&k=20&c=cAEJvjTFRuF9H9gRov1Aj4X4I6xV6DSvMwWsf-2IW-0=" alt="Strength Training Class">
+                    <p>Focus on building muscle and increasing strength with a variety of weight lifting exercises and resistance training techniques.</p>
+                    <ul>
+                        <li>Duration: 60 minutes</li>
+                        <li>Difficulty: All levels</li>
+                        <li>Benefits: Increased muscle mass, enhanced strength, better overall endurance.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+                
+                <!-- Zumba Class -->
+                <div class="class">
+                    <h3>Zumba</h3>
+                    <img src="https://media.istockphoto.com/id/1204577442/photo/low-angle-view-of-handsome-trainer-performing-zumba-with-multicultural-dancers-in-studio.jpg?s=612x612&w=0&k=20&c=ALBWRBYnLIz3tl-rnSzk9Yw8h2IgoSon21UaOZRo8ow=" alt="Zumba Class">
+                    <p>Dance your way to fitness with fun and energetic Zumba routines set to high-energy Latin music. A great cardio workout that doesn’t feel like exercise!</p>
+                    <ul>
+                        <li>Duration: 60 minutes</li>
+                        <li>Difficulty: Beginner to Intermediate</li>
+                        <li>Benefits: Weight loss, improved coordination, enhanced cardiovascular fitness.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+
+                <!-- Pilates Class -->
+                <div class="class">
+                    <h3>Pilates</h3>
+                    <img src="https://complete-pilates.co.uk/wp-content/uploads/2020/12/Types-of-Pilates-Complete-Pilates.jpg" alt="Pilates Class">
+                    <p>Strengthen your core, improve flexibility, and increase body awareness with our Pilates classes, designed to engage the mind and body.</p>
+                    <ul>
+                        <li>Duration: 60 minutes</li>
+                        <li>Difficulty: Beginner to Advanced</li>
+                        <li>Benefits: Core strength, improved posture, increased flexibility.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+
+                <!-- Kickboxing Class -->
+                <div class="class">
+                    <h3>Kickboxing</h3>
+                    <img src="https://fightgym.gr/wp-content/uploads/2023/11/fightgym-kavala-kick-boxing.jpg" alt="Kickboxing Class">
+                    <p>Kickboxing is an intense workout that combines martial arts techniques with high-energy cardio. Perfect for improving strength, coordination, and agility.</p>
+                    <ul>
+                        <li>Duration: 45 minutes</li>
+                        <li>Difficulty: Intermediate to Advanced</li>
+                        <li>Benefits: Increased strength, endurance, stress relief, improved coordination.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+
+                <!-- Spin Class -->
+                <div class="class">
+                    <h3>Spin</h3>
+                    <img src="https://originfitness.com/media/wysiwyg/casestudies/Gymnation/web_GymNation_55_.jpg" alt="Spin Class">
+                    <p>Get ready for a high-intensity cardio workout with our spin classes. Perfect for improving cardiovascular fitness and building leg strength.</p>
+                    <ul>
+                        <li>Duration: 45 minutes</li>
+                        <li>Difficulty: All levels</li>
+                        <li>Benefits: Enhanced cardiovascular endurance, calorie burning, toning legs.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+
+                <!-- Barre Class -->
+                <div class="class">
+                    <h3>Barre</h3>
+                    <img src="https://4194181.fs1.hubspotusercontent-na1.net/hubfs/4194181/Pure_Barre_Learn_The_Lingo.png" alt="Barre Class">
+                    <p>Barre classes combine ballet-inspired moves with elements of Pilates, dance, yoga, and strength training to give you a full-body workout.</p>
+                    <ul>
+                        <li>Duration: 60 minutes</li>
+                        <li>Difficulty: Beginner to Intermediate</li>
+                        <li>Benefits: Improved posture, flexibility, strength, and balance.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+
+                <!-- Boxing Class -->
+                <div class="class">
+                    <h3>Boxing</h3>
+                    <img src="https://www.bradford.ac.uk/media-v8/site/unique-fitness/Boxing-Fitness-Column-Image.jpg" alt="Boxing Class">
+                    <p>Work on your cardio, strength, and agility with boxing classes designed to enhance your coordination and overall fitness.</p>
+                    <ul>
+                        <li>Duration: 60 minutes</li>
+                        <li>Difficulty: Beginner to Advanced</li>
+                        <li>Benefits: Increased strength, stamina, agility, and stress relief.</li>
+                    </ul>
+                    <button onclick="window.location.href='schedule.html'">View Schedule</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
+
+</body>
+</html>

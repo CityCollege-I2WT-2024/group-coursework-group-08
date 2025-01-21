@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- developed by: Thomas Petridis, Refined by Andreas -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Equipment Guide</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 20px 0;
+            text-align: center;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0 1em; /* Use relative margins for better responsiveness */
+    font-size: 1em; /* Adjust font size dynamically */
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+header ul li a:hover {
+    color: rgb(212, 10, 10);
+}
+
+ul li ul.homedropdown,
+ul li ul.dropdown {
+    transform: scaleY(0); /* Start collapsed */
+    transform-origin: top center;
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align with the parent item */
+    background-color: black;
+    z-index: 999;
+    width: 100%; /* Full width for better adaptability */
+    padding: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+ul li ul.dropdown li,
+ul li ul.homedropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li ul.dropdown li a, ul li ul.homedropdown li a {
+    font-size: 0.875em; /* Smaller font size for dropdown links */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    display: block; /* Full width clickable links */
+    transition: background-color color 0.2s ease;
+}
+
+ul li ul.dropdown li a:hover, ul li ul.homedropdown li a:hover {
+    background-color: rgb(50, 50, 50);
+    color: darkred;
+}
+
+/* Show Dropdown on Hover */
+header ul li:hover ul.dropdown, header ul li:hover ul.homedropdown {
+    transform: scaleY(1); /* Expand vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 345px) {
+    header ul {
+    display: flex;
+    justify-content: center; /* Center the entire list horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    list-style: none;
+    margin: 0.5em 1em; /* Space between list items */
+    position: relative; /* For dropdown positioning */
+    text-align: center; /* Center content within list items */
+    display: flex; /* Flex for internal alignment */
+    flex-direction: column; /* Stack content inside each item */
+    align-items: center; /* Center align the content horizontally */
+}
+
+    ul li ul.homedropdown,
+    ul li ul.dropdown {
+        align-items: center;
+        position: static; /* No absolute positioning for easier stacking */
+        transform: none; /* Always visible */
+        width: 100%; /* Full width dropdowns */
+    }
+
+    ul li ul.dropdown li a,
+    ul li ul.homedropdown li a {
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+    }
+}
+
+        .content-section {
+            padding: 2rem;
+            margin: 2rem auto;
+            background: #000000;
+            border-radius: 8px;
+            max-width: 1000px;
+        }
+
+        .section-title {
+            background: #1a1a1a;
+            color: #ff5c5c;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border: 2px solid #d60606;
+            border-radius: 8px;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .equipment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .equipment-card {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+        }
+
+        .equipment-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .equipment-card h3 {
+            font-size: 1.2rem;
+            color: #ff4c4c;
+            text-align: center;
+            background: #1e1e1e;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .equipment-card p {
+            font-size: 0.9rem;
+            color: #eaeaea;
+            margin: 0.5rem 0;
+        }
+
+        footer {
+            background-color: #cc2121;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        
+        @media (max-width: 768px) {
+            .equipment-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li>
+              <a href="../../index.html">HOME PAGE</a>
+              <ul class="homedropdown">
+              <li><a href="../tsertanidis/site2.html">TEAM PAGE</a></li>
+              <li><a href="../tsertanidis/site3.html">CONTACT US</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../mouradakis/membership plans.html">PRICING DETAILS</a>
+            <ul class="dropdown">
+              <li><a href="../mouradakis/membershipbenefits.html">MEMBERSHIP BENEFITS</a></li>
+              <li><a href="../mouradakis/pricing table.html">PRICING TABLE</a></li>
+              <li><a href="../mouradakis/promotion.html">PROMOTIONS</a></li>
+              <li><a href="../mouradakis/FAQS.html">COMMON QUESTIONS (FAQ)</a></li>
+            </ul>
+          </li>
+
+            <li><a href="../patousias/classes.html">CLASS TYPES</a>
+              <ul class="dropdown">
+                <li><a href="../patousias/schedule.html">SCHEDULES</a></li>
+                <li><a href="../patousias/testimonials (1).html">TESTIMONIALS</a></li>
+                <li><a href="../patousias/events.html">EVENTS</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../petridis/Fitness .html">FITNESS RESOURCES</a>
+              <ul class="dropdown">
+                <li><a href="../petridis/Video.html">VIDEO TUTORIALS</a></li>
+                <li><a href="../petridis/Nutrition Guides.html">NUTRITION GUIDES</a></li>
+                <li><a href="../petridis/Workout Plans.html">WORKOUT PLANS</a></li>
+                <li><a href="../petridis/Gym Equipment Guide.html">EQUIPMENT GUIDES</a></li>
+              </ul>
+            </li>
+
+            <li><a href="../portokalidis/porto.html">INTERACTIVE</a>
+              <ul class="dropdown">
+                <li><a href="#">PROGRESS TRACKER</a></li>
+                <li><a href="#">FITNESS CALCULATOR</a></li>
+                <li><a href="#">FEEDBACK PAGE</a></li>
+                <li><a href="#">INTERACTIVE</a></li>
+              </ul>
+            </li>
+
+            <li><a href="">PERSONAL</a>
+                <ul class="dropdown">
+                  <li><a href="../../students/personal.html">ANDREAS</a></li>
+                  <li><a href="#">THOMAS</a></li>
+                  <li><a href="#">STERGIOS</a></li>
+                  <li><a href="#">IOANNIS</a></li>
+                  <li><a href="#">GEORGIOS</a></li>
+                </ul>
+              </li>
+
+        </ul>
+    </header>
+   
+    <section id="equipment-guide" class="content-section">
+        <div class="section-title">Gym Equipment Guide</div>
+
+        <div class="equipment-container">
+          
+            <div class="equipment-card">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/lifestyle-gym-and-fitness-barcelona-athlete-running-royalty-free-image-1577740444.jpg" alt="Treadmill">
+                <h3>Treadmill</h3>
+                <p>Use the treadmill for cardio workouts. Adjust the speed and incline to match your fitness level.</p>
+                <p><strong>Instructions:</strong> Start with a 5-minute warm-up walk, gradually increase speed for a run, and end with a cool-down.</p>
+            </div>
+
+            
+            <div class="equipment-card">
+                <img src="https://fitnessdepot.pk/wp-content/uploads/2023/09/The-Power-of-Dumbbells-Building-Strength-and-Confidence-in-Every-Lift.jpg" alt="Dumbbells">
+                <h3>Dumbbells</h3>
+                <p>Dumbbells are versatile for strength training. Use them for exercises like bicep curls, shoulder presses, and lunges.</p>
+                <p><strong>Instructions:</strong> Select a comfortable weight and maintain proper form to avoid injuries.</p>
+            </div>
+
+            
+            <div class="equipment-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5sJ3VyhmgEW7Z5bXKR_xShXNWRuHRKRArow&s" alt="Bench Press">
+                <h3>Bench Press</h3>
+                <p>The bench press targets the chest, shoulders, and triceps. It is ideal for upper body strength.</p>
+                <p><strong>Instructions:</strong> Lie on the bench, grip the barbell evenly, and lower it to your chest before pushing back up.</p>
+            </div>
+
+            
+            <div class="equipment-card">
+                <img src="https://cdn.mos.cms.futurecdn.net/9EahYj7iz9SQXiSoxHBpnn.jpg" alt="Rowing Machine">
+                <h3>Rowing Machine</h3>
+                <p>A full-body cardio machine that targets the back, arms, and legs. Perfect for endurance training.</p>
+                <p><strong>Instructions:</strong> Maintain a straight back, pull the handle to your chest, and extend your legs fully.</p>
+            </div>
+
+            <div class="equipment-card">
+                <img src="https://mirafit.co.uk/wp/wp-content/uploads/2023/04/Mirafit-Leg-Press-Machine-Foot-Placement-1024x683.jpg" alt="Leg Press">
+                <h3>Leg Press</h3>
+                <p>The leg press strengthens the lower body, including quads, hamstrings, and glutes.</p>
+                <p><strong>Instructions:</strong> Adjust the seat, place your feet shoulder-width apart, and push the platform with control.</p>
+            </div>
+
+            
+            <div class="equipment-card">
+                <img src="https://media.istockphoto.com/id/1337244085/photo/rearview-shot-of-a-young-man-lifting-doing-pull-ups-at-a-gym.jpg?s=612x612&w=0&k=20&c=czHLLSkIuqOYyrjHFQoyEwNp5lI0BNu8oI6152VUxPo=" alt="Pull-Up Bar">
+                <h3>Pull-Up Bar</h3>
+                <p>Perfect for upper body strength, focusing on back, shoulders, and arms.</p>
+                <p><strong>Instructions:</strong> Grip the bar with palms facing away, pull yourself up until your chin is above the bar, and lower back down.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <b>Contact info</b>
+        <p> atsertanidis@york.citycollege.eu</p>
+            +30694286381
+    </footer>
+</body>
+</html>
