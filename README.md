@@ -1,10 +1,17 @@
 Group Name   : CITY GYM
+
 Website Title: CITY GYM
+
 Group Leader : Andreas Tsertanidis
+
 Group Member1: Thomas Petridis
+
 Group Member2: Stergios Mouradakis
+
 Group Member3: Ioannis Patousias
+
 Group Member4: Georgios Portokalidis
+
 
 ## Instructions:
 - clone this repo
